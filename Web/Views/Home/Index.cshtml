@@ -1,0 +1,71 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+<!-- Nav -->
+<div class="header" id="header">
+	<div class="navbar-fixed">
+		<nav class="z-depth-0">
+			<div class="nav-wrapper">
+				<a href="#header" class="brand-logo">Minecraft Controller</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="#login">Login</a></li>
+					<li><a href="#about">About</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="#login">Login</a></li>
+					<li><a href="#about">About</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<!-- / Nav -->
+
+	<div class="header-content center-align" data-aos="fade">
+		<h1 style="padding-top: 6%;">Welcome To Minecraft Controller</h1>
+		<h5 style="">Start and stop Minecraft servers.</h5>
+		<a class="waves-effect waves-light btn-large grey darken-4" style="margin-bottom: 10%; margin-top: 2%;" href="#login">Login</a>
+	</div>
+</div>
+
+<!-- Info -->
+
+<div class="info center-align" data-aos="fade">
+	<div class="main">
+		<div class="row">
+			<div class="col s12">
+				<img class="responsive-img" src="/img/ender-icon.png" style="width:100px">
+				<h4>The cake is a lie</h4>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- / Info -->
+
+<!-- Login -->
+<div class="contact" id="login">
+	<div class="main">
+		<div class="card-panel" data-aos="fade-up">
+			<h4 class="center-align">Login</h4>
+			<form class="col s12" method="POST" action="/">
+				<div class="row">
+					<div class="input-field col s6">
+						<input type="text" class="form-control" id="username" name="username" placeholder="Name" required />
+					</div>
+					<div class="input-field col s6">
+						<input type="password" class="form-control" id="password" name="password" placeholder="Password" required />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12">
+						<button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect grey darken-4'>Submit</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+<!-- /Login -->

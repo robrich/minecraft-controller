@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+	<!-- Olympia 2.0, created with love by Sid Engel. -->
+
+	<!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
+
+	<!-- Materialize -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css" rel="stylesheet" crossorigin="anonymous" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js" crossorigin="anonymous"></script>
+
+	<!-- Roboto Font + Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" crossorigin="anonymous" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" crossorigin="anonymous" />
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+	<!-- AOS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js" crossorigin="anonymous"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css" rel="stylesheet" crossorigin="anonymous" />
+
+	<!-- MC Player Counter -->
+	<script src="https://cdn.rawgit.com/leonardosnt/mc-player-counter/1.1.0/dist/mc-player-counter.min.js" crossorigin="anonymous"></script>
+
+	<!-- Theme's Stylesheet -->
+	<link href="/css/theme.css" rel="stylesheet"/>
+
+	<!-- Site Title -->
+	<title>Minecraft Controller</title>
+	@RenderSection("styles", required: false)
+</head>
+<body>
+	@RenderBody()
+	
+	<!-- Footer -->
+	<footer class="page-footer grey darken-4 z-depth-4" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col l8 s12">
+					<h5 class="white-text">About Minecraft Controller</h5>
+					<p class="grey-text text-lighten-4">Thank you Sid Engel. Get Olympia theme on <a href="https://github.com/sid-engel/olympia" target="_blank">GitHub</a>.</p>
+					<p class="grey-text text-lighten-4">Fork Minecraft Controller on <a href="https://github.com/robrich/minecraft-controller">GitHub</a>.</p>
+				</div>
+				<div class="col l4 s12">
+					<h5 class="white-text">&nbsp;</h5>
+					<p class="grey-text text-lighten-4">
+						Created by <a href="https://richardsonandsons.com/" target="_blank">Richardson &amp; Sons, LLC</a>.
+					</p>
+					<p class="grey-text text-lighten-4">
+						&copy; @DateTime.Now.Year <a href="https://richardsonandsons.com/" target="_blank">Richardson &amp; Sons, LLC</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /Footer -->
+	
+	<script src="/js/script.js"></script>
+	@RenderSection("scripts", required: false)
+</body>
+</html>

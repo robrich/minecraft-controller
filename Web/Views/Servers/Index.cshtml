@@ -1,0 +1,130 @@
+﻿@model List<AzureInfo>
+
+@{
+	ViewBag.Title = "Azure Info";
+}
+
+<!-- Nav -->
+<div class="header" id="header">
+	<div class="navbar-fixed">
+		<nav class="z-depth-0">
+			<div class="nav-wrapper">
+				<a href="#header" class="brand-logo">Minecraft Controller</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="#servers">Servers</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="@Url.Action("Logout", "Home")">Log out</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="#servers">Servers</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="@Url.Action("Logout", "Home")">Log out</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<!-- / Nav -->
+
+	<div class="header-content center-align" data-aos="fade">
+		<h1 style="padding-top: 6%;">Welcome To Minecraft Controller</h1>
+		<h5 style="">Start and stop Minecraft servers on Azure.</h5>
+		<a class="waves-effect waves-light btn-large grey darken-4" style="margin-bottom: 10%; margin-top: 2%;" href="#servers">
+			<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+		</a>
+	</div>
+</div>
+
+<!-- Vip -->
+<div class="vip center-align" id="servers">
+	<div class="main">
+		<div class="row">
+			@foreach (AzureInfo server in Model) {
+				<div class="col s12 l4" data-aos="@server.FadeDirection">
+					<div class="card-panel vm-group" data-subscriptionid="@server.SubscriptionId" data-name="@server.Name" data-online="@server.Online.ToString().ToLowerInvariant()">
+						<div class="row">
+							<div class="col s12">
+								<h5>@server.NickName</h5>
+								<div>@server.Url</div><br/>
+								<i class="chip">
+									<span data-playercounter-ip="@server.Url"></span> players
+								</i>
+								<br><br>
+								<table class="centered responsive-table striped">
+									<tbody>
+									<tr>
+										<td>Minecraft: <span data-playercounter-status data-playercounter-ip="@server.Url"></span></td>
+									</tr>
+									<tr>
+										<td>Server: @server.Status</td>
+									</tr>
+									<tr>
+										<td>Size: @server.Size</td>
+									</tr>
+									</tbody>
+								</table>
+								<br>
+								@if (server.Online) {
+									<a class="waves-effect waves-light btn-large grey darken-4 vm-control" href="#" title="stop server">
+										<i class="fa fa-stop" alt="stop server"></i>
+									</a>
+								} else {
+									<a class="waves-effect waves-light btn-large grey darken-4 vm-control" href="#" title="start server">
+										<i class="fa fa-play" alt="start server"></i>
+									</a>
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</div>
+<!-- /Vip -->
+
+<!-- Contact -->
+<div class="contact" id="contact">
+	<div class="main">
+		<div class="card-panel" data-aos="fade-up">
+			<h4 class="center-align">
+				<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+				Removing Herobrine ...
+			</h4>
+		</div>
+	</div>
+</div>
+<!-- /Contact -->
+
+@section scripts {
+	<script>
+		$(document).ready(function () {
+			$('.vm-control').click(function (e) {
+				if (e.button !== 0) {
+					return; // not left-click
+				}
+				e.preventDefault();
+				
+				var that = $(this);
+				var group = that.closest('.vm-group');
+
+				var name = group.data('name');
+				var subscriptionid = group.data('subscriptionid');
+				var online = group.data('online');
+				var newOnline = !online;
+				var icon = that.find('i');
+				icon.removeClass('fa-play').removeClass('fa-stop').addClass('fa-spinner').addClass('fa-spin');
+				
+				$.post('@Url.Action("SetVm")', { SubscriptionId: subscriptionid, VmName: name, SetToRunning: newOnline }, function (r) {
+					if (!r.Success) {
+						alert(r.Message);
+					}
+					location.reload();
+				});
+
+			});
+		
+		});
+	</script>
+}
+
